@@ -1,6 +1,9 @@
 class User
 	include ActiveModel::SecurePassword
  	include Mongoid::Document
+
+ 	before_save { self.email = email.downcase }
+  before_create :create_remember_token
   
   field :name,            type: String 
   field :email,           type: String 
