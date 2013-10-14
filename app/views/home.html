@@ -46,7 +46,7 @@
 </div>  
 
 <script type="text/javascript">
-  function accomplishmentController($scope) { 
+  function accomplishmentController($scope, $http) { 
     
     $scope.accomplishments = [];
     $scope.submit = function() {
@@ -58,7 +58,6 @@
       this.accomp.count = currentcount + 1;
     }
     $scope.delete = function() {
-        console.log("called");
       index = this.$index;
       $scope.accomplishments.splice(index, 1)
     }
