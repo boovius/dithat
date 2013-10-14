@@ -9,4 +9,5 @@ Dithat::Application.routes.draw do
       end
     end
   end
+  root to: 'pages#home'
 end

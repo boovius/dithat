@@ -1,0 +1,69 @@
+<style type="text/css">
+  .container {
+    background-color: #F0F0F0;
+    width: 100%;
+}
+.box { 
+    width: 100%;
+    height: 80px;
+    background-color: #E1FCF3;
+}
+.x {
+    top: 0;
+    right: 15px;
+    position: absolute;
+}
+.accomplishment {
+    padding-top: 20px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 24px;
+    position: relative;
+}
+.count {
+  float: right;
+  padding-right: 30px;
+}
+
+</style>
+
+<body data-ng-app="">
+<div class="container" data-ng-controller="accomplishmentController">
+    <p> What'd you do? </p>
+    <form ng-submit="submit()">
+        <input type="text" ng-model="newAccomp" />
+    </form>
+    <div data-ng-repeat="accomp in accomplishments | filter:newAccomp" >
+        <div class="box" ng-click="addToCount()">
+          <div class="accomplishment">
+        {{ accomp.name }}
+              <a href="#" ng-click="delete()" class="x">x</a>
+              <p class="count"> {{ accomp.count }} </p>
+          </div>
+        </div>
+    </div>
+</div>  
+
+<script type="text/javascript">
+  function accomplishmentController($scope) { 
+    
+    $scope.accomplishments = [];
+    $scope.submit = function() {
+      $scope.accomplishments.unshift({ name: $scope.newAccomp, count: 0 });
+      $scope.newAccomp = '';
+    }
+    $scope.addToCount = function() {
+      var currentcount = this.accomp.count;
+      this.accomp.count = currentcount + 1;
+    }
+    $scope.delete = function() {
+        console.log("called");
+      index = this.$index;
+      $scope.accomplishments.splice(index, 1)
+    }
+  
+}
+ 
+</script>  
+</body>
