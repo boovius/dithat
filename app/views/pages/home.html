@@ -28,7 +28,7 @@
 
 </style>
 
-<body data-ng-app="">
+<body data-ng-app="dithat">
 <div class="container" data-ng-controller="accomplishmentController">
     <p> What'd you do? </p>
     <form ng-submit="submit()">
@@ -46,8 +46,13 @@
 </div>  
 
 <script type="text/javascript">
-  function accomplishmentController($scope) { 
-    
+  app = angular.module("dithat", ["ngResource"]);
+  app.controller("accomplishmentController", function($scope, $resource) {
+  
+    Entry = $resource('/api/users');
+    users = Entry.query(function() {
+      console.log(users);
+    });
     $scope.accomplishments = [];
     $scope.submit = function() {
       $scope.accomplishments.unshift({ name: $scope.newAccomp, count: 0 });
@@ -58,12 +63,10 @@
       this.accomp.count = currentcount + 1;
     }
     $scope.delete = function() {
-        console.log("called");
       index = this.$index;
       $scope.accomplishments.splice(index, 1)
     }
-  
-}
- 
+  });
+
 </script>  
 </body>
