@@ -1,6 +1,6 @@
 User.destroy_all
 
-mediate = Habit.new({
+meditate = Habit.new({
 	name: 'mediate',
 	count: '0',
 })
@@ -10,12 +10,12 @@ exercise = Habit.new({
 	count: '0',
 })
 
-weekly = WeeklyChart.new({
-	habits: [mediate, exercise]
+weekly = WeeklyHabit.new({
+	habits: [meditate, exercise]
 	})
 
 bob = User.create ({
 	name: 'bob',
 	email: 'bob@bob.com',
-	weekly_charts: [weekly]
+	weekly_habits: [weekly]
 })

@@ -50,16 +50,23 @@
   
   app.controller("accomplishmentController", function($scope, $resource) {
   
-    Entry = $resource('/api/users/:user_id/weekly_habits/:id/', {user_id: '@user'});
+    Entry = $resource("/api/users");
     users = Entry.query(function() {
-      $scope.accomplishments = users[0].weekly_charts[0].habits;
-      $scope.submit = function() {
-      entry = Entry.save({name: $scope.newAccomp, count: 0}) 
-      $scope.accomplishments.unshift(entry);
-      $scope.newAccomp = '';
-    }
-    });
+      $scope.accomplishments = users[0].weekly_habits[0].habits;
+      var user_id = users[0]._id.$oid;
+      var weeklyid = users[0].weekly_habits[0]._id.$oid;
 
+      $scope.submit = function() {
+        console.log(this);
+        weekly_habits = $resource('/api/users/:user_id/weekly_habits/:id/', {user_id: user_id, id: weeklyid });
+        entry = weekly_habits.save({name: $scope.newAccomp, count: 0});
+        $scope.accomplishments.unshift(entry);
+        $scope.newAccomp = '';
+      }
+
+    });
+      
+    
     // $scope.accomplishments = angular.forEach users;
     
     $scope.addToCount = function() {

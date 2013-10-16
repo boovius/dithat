@@ -11,9 +11,9 @@ class User
   #field :password_digest, type: String
   #field :remember_token,  type: String
 
-  embeds_many :daily_charts
-  embeds_many :monthly_charts
-  embeds_many :weekly_charts
+  embeds_many :daily_habits
+  embeds_many :monthly_habits
+  embeds_many :weekly_habits
 
   validates_presence_of :email
   validates_uniqueness_of :email
