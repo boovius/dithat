@@ -46,18 +46,22 @@
 </div>  
 
 <script type="text/javascript">
-  app = angular.module("dithat", ["ngResource"]);
+  app = angular.module("dithat", ["ngResource", 'ng-rails-csrf']);
+  
   app.controller("accomplishmentController", function($scope, $resource) {
   
-    Entry = $resource('/api/users');
+    Entry = $resource('/api/users/:user_id/weekly_habits/:id/', {user_id: '@user'});
     users = Entry.query(function() {
-      console.log(users);
-    });
-    $scope.accomplishments = [];
-    $scope.submit = function() {
-      $scope.accomplishments.unshift({ name: $scope.newAccomp, count: 0 });
+      $scope.accomplishments = users[0].weekly_charts[0].habits;
+      $scope.submit = function() {
+      entry = Entry.save({name: $scope.newAccomp, count: 0}) 
+      $scope.accomplishments.unshift(entry);
       $scope.newAccomp = '';
     }
+    });
+
+    // $scope.accomplishments = angular.forEach users;
+    
     $scope.addToCount = function() {
       var currentcount = this.accomp.count;
       this.accomp.count = currentcount + 1;

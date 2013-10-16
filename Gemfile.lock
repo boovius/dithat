@@ -68,6 +68,7 @@ GEM
       bson (~> 2.0.0.rc3)
       optionable (~> 0.1.1)
     multi_json (1.8.2)
+    ng-rails-csrf (0.1.0)
     optionable (0.1.1)
     origin (1.1.0)
     polyglot (0.3.3)
@@ -132,6 +133,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mongoid!
+  ng-rails-csrf
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
