@@ -58,8 +58,8 @@
 
       $scope.submit = function() {
         console.log(this);
-        weekly_habits = $resource('/api/users/:user_id/weekly_habits/:id/', {user_id: user_id, id: weeklyid });
-        entry = weekly_habits.save({name: $scope.newAccomp, count: 0});
+        habit = $resource('/api/users/:user_id/weekly_habits/:weekly_habit_id/habits', {user_id: user_id, weekly_habit_id: weeklyid });
+        entry = habit.save({name: $scope.newAccomp, count: 0});
         $scope.accomplishments.unshift(entry);
         $scope.newAccomp = '';
       }
