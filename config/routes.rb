@@ -1,4 +1,5 @@
 Dithat::Application.routes.draw do
+  devise_for :users
   get "habits/create"
   namespace :api, defaults: {format: :json} do
     resources :users do
@@ -16,5 +17,6 @@ Dithat::Application.routes.draw do
       end
     end
   end
-  root to: 'pages#home'
+  root to: 'pages#home' # create root_path -Ray
+  get 'about' => 'pages#about' #creates about_path -Ray
 end

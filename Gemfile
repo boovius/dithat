@@ -5,6 +5,8 @@ gem 'rails', '4.0.0'
 
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson'
+gem 'devise', '~> 3.1.1' # Authentication & Authorization -Ray
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass', branch: '3' # -Ray
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

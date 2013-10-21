@@ -1,0 +1,30 @@
+<!-- Keeping it classy & snazzy -Ray -->
+<div class="jumbotron center">
+     <h1>Welcome to DiThat</h1>
+     <% if user_signed_in? %>
+          # do something
+     <% else %>
+       <p>
+         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+       </p>
+  <% end %>  
+</div>
+
+<body data-ng-app="dithat">
+  <div class="container" data-ng-controller="accomplishmentController">
+      <p> What'd you do? </p>
+      <form ng-submit="submit()">
+          <input type="text" ng-model="newAccomp" />
+      </form>
+      <div data-ng-repeat="accomp in accomplishments | filter:newAccomp" >
+          <div class="box" ng-click="addToCount()">
+            <div class="accomplishment">
+                {{ accomp.name }}
+                <a href="#" ng-click="delete()" class="x">x</a>
+                <p class="count"> {{ accomp.count }} </p>
+            </div>
+          </div>
+      </div>
+  </div>  <!-- end class-container accomp-ctrl  -->
+</body>

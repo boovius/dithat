@@ -1,0 +1,28 @@
+@import 'bootstrap'; /*-Ray*/
+
+.container {
+    background-color: #F0F0F0;
+    width: 100%;
+}
+.box { 
+    width: 100%;
+    height: 80px;
+    background-color: #E1FCF3;
+}
+.x {
+    top: 0;
+    right: 15px;
+    position: absolute;
+}
+.accomplishment {
+    padding-top: 20px;
+    padding-left: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 24px;
+    position: relative;
+}
+.count {
+  float: right;
+  padding-right: 30px;
+}
