@@ -1,85 +1,17 @@
-<style type="text/css">
-  .container {
-    background-color: #F0F0F0;
-    width: 100%;
-}
-.box { 
-    width: 100%;
-    height: 80px;
-    background-color: #E1FCF3;
-}
-.x {
-    top: 0;
-    right: 15px;
-    position: absolute;
-}
-.accomplishment {
-    padding-top: 20px;
-    padding-left: 10px;
-    margin-top: 20px;
-    margin-left: 10px;
-    font-size: 24px;
-    position: relative;
-}
-.count {
-  float: right;
-  padding-right: 30px;
-}
-
-</style>
-
 <body data-ng-app="dithat">
-<div class="container" data-ng-controller="accomplishmentController">
-    <p> What'd you do? </p>
-    <form ng-submit="submit()">
-        <input type="text" ng-model="newAccomp" />
-    </form>
-    <div data-ng-repeat="accomp in accomplishments | filter:newAccomp" >
-        <div class="box" ng-click="addToCount()">
-          <div class="accomplishment">
-        {{ accomp.name }}
-              <a href="#" ng-click="delete()" class="x">x</a>
-              <p class="count"> {{ accomp.count }} </p>
+  <div class="container" data-ng-controller="accomplishmentController">
+      <p> What'd you do? </p>
+      <form ng-submit="submit()">
+          <input type="text" ng-model="newAccomp" />
+      </form>
+      <div data-ng-repeat="accomp in accomplishments | filter:newAccomp" >
+          <div class="box" ng-click="addToCount()">
+            <div class="accomplishment">
+          {{ accomp.name }}
+                <a href="#" ng-click="delete()" class="x">x</a>
+                <p class="count"> {{ accomp.count }} </p>
+            </div>
           </div>
-        </div>
-    </div>
-</div>  
-
-<script type="text/javascript">
-  app = angular.module("dithat", ["ngResource"]);
-  
-  app.controller("accomplishmentController", function($scope, $resource) {
-  
-    Entry = $resource("/api/users");
-    users = Entry.query(function() {
-      console.log($scope.$id);
-      $scope.accomplishments = users[0].weekly_habits[0].habits;
-      var user_id = users[0]._id.$oid;
-      var weeklyid = users[0].weekly_habits[0]._id.$oid;
-
-      $scope.submit = function() {
-        console.log(this);
-        habit = $resource('/api/users/:user_id/weekly_habits/:weekly_habit_id/habits', {user_id: user_id, weekly_habit_id: weeklyid });
-        entry = habit.save({name: $scope.newAccomp, count: 0});
-        $scope.accomplishments.unshift(entry);
-        $scope.newAccomp = '';
-      }
-      
-      $scope.addToCount = function() {
-        var currentcount = this.accomp.count;
-        this.accomp.count = currentcount + 1;
-      }
-
-      $scope.delete = function() {
-        index = this.$index;
-        $scope.accomplishments.splice(index, 1)
-      }
-
-    });
-      
-    
-
-  });
-
-</script>  
+      </div>
+  </div>  <!-- end class-container accomp-ctrl  -->
 </body>
