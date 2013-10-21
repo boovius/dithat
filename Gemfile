@@ -27,6 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 gem 'angularjs-rails'
+gem 'angularjs-rails-resource', '~> 0.2.3'
 gem 'ng-rails-csrf'
 group :assets do
 end
