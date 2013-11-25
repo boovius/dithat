@@ -2,20 +2,24 @@ User.destroy_all
 
 meditate = Habit.new({
 	name: 'mediate',
-	count: '0',
+	count: '3',
+  interval: 'week'
 })
 
 exercise = Habit.new({
 	name: 'exercise',
-	count: '0',
+	count: '4',
+  interval: 'week'
 })
 
-weekly = WeeklyHabit.new({
-	habits: [meditate, exercise]
-	})
+walk_in_nature = Habit.new({
+  name: 'walk in nature',
+  count: '2',
+  interval: 'month'
+})
 
 bob = User.create ({
 	name: 'bob',
 	email: 'bob@bob.com',
-	weekly_habits: [weekly]
+	habits: [meditate, exercise, walk_in_nature]
 })
