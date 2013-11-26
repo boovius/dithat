@@ -2,16 +2,16 @@
   <div class="container" data-ng-controller="accomplishmentController">
       <p> What'd you do? </p>
       <form ng-submit="submit()">
-          <input type="text" ng-model="newAccomp" />
+          <input type="text" ng-model="input" />
       </form>
-      <div data-ng-repeat="accomp in accomplishments | filter:newAccomp" >
+      <div data-ng-repeat="habit in currentWeekHabits | filter:input" >
           <div class="box" ng-click="addToCount()">
             <div class="accomplishment">
-          {{ accomp.name }}
+          {{ habit.name }}
                 <a href="#" ng-click="delete()" class="x">x</a>
-                <p class="count"> {{ accomp.count }} </p>
+                <p class="count"> {{ habit.count }} </p>
             </div>
           </div>
       </div>
-  </div>  <!-- end class-container accomp-ctrl  -->
+  </div>  <!-- end class-container habit-ctrl  -->
 </body>

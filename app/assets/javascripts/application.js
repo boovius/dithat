@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
-//= require angular-resource
+//= require ../../../vendor/assets/javascripts/angular-resource.js
 //= require ng-rails-csrf
-//= require turbolinks
 //= require_tree .

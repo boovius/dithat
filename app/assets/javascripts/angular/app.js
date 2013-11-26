@@ -1,1 +1,1 @@
-app = angular.module("dithat", ["ngResource"]);
+Dithat = angular.module("dithat", ["ngResource"]);

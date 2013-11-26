@@ -4,9 +4,13 @@ class Api::UsersController < ApplicationController
 	def index
 		respond_with User.all
 	end
-	
+
 	def show
 		respond_with User.find(params[:id])
+	end
+
+	def week
+		respond_with Habit.where(interval: :week)
 	end
 
 	def create

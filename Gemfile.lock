@@ -36,7 +36,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     angularjs-rails (1.0.8)
-    angularjs-rails-resource (0.2.3)
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.0.1)
@@ -128,7 +127,6 @@ PLATFORMS
 
 DEPENDENCIES
   angularjs-rails
-  angularjs-rails-resource (~> 0.2.3)
   bcrypt-ruby (~> 3.0.0)
   bson
   coffee-rails (~> 4.0.0)
