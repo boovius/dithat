@@ -5,23 +5,19 @@ Dithat.controller("accomplishmentController", ['$scope', 'UserService', function
   $scope.weeklyHabits = UserService.weekResource.query(function(data){
     angular.forEach(data, function(value){
       UserService.currentWeekList.push(value)
-
     })
-    console.log(UserService.currentWeekList)
   })
 
     $scope.submit = function() {
-      habit = $resource('/api/users/:user_id/weekly_habits/:weekly_habit_id/habits', {user_id: user_id, weekly_habit_id: weeklyid });
-      console.log(habit);
-      console.log($scope.$id);
-      entry = habit.save({name: $scope.newAccomp, count: 0});
-      $scope.accomplishments.unshift(entry);
-      $scope.newAccomp = '';
+      console.log($scope.input)
+      var new_habit = {name: $scope.input, count: 0}
+      $scope.input = ''
+      $scope.currentWeekHabits.unshift(new_habit)
+      UserService.habitResource.update(new_habit)
     }
 
     $scope.addToCount = function() {
-      var currentcount = this.accomp.count;
-      this.accomp.count = currentcount + 1;
+      this.habit.count += 1
     }
 
     $scope.delete = function() {

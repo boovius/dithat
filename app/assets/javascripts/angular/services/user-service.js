@@ -11,6 +11,10 @@ Dithat.factory('UserService', ['$resource', function($resource) {
 
   return {
     currentWeekList: currentWeekList,
-    weekResource: $resource('/api/users/week.json', {}, {})
+    weekResource: $resource('/api/users/week.json', {}, {}),
+    monthResource: $resource('/api/users/month.json', {}, {}),
+    habitResource: $resource('api/users/habits', {}, {
+      update: {method: 'PUT'}
+    })
   }
 }])
