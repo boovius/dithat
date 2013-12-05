@@ -1,17 +1,16 @@
-<body data-ng-app="dithat">
-  <div class="container" data-ng-controller="accomplishmentController">
-      <p> What'd you do? </p>
-      <form ng-submit="submit()">
-          <input type="text" ng-model="input" />
-      </form>
-      <div data-ng-repeat="habit in currentWeekHabits | filter:input" >
-          <div class="box" ng-click="addToCount()">
-            <div class="accomplishment">
-          {{ habit.name }}
-                <a href="#" ng-click="delete()" class="x">x</a>
-                <p class="count"> {{ habit.count }} </p>
-            </div>
+<div class="container" data-ng-controller="accomplishmentController">
+    <p> What'd you do? </p>
+    <form ng-submit="submit()">
+        <input type="text" ng-model="input" />
+    </form>
+    <div data-ng-repeat="habit in currentWeekHabits | filter:input" >
+        <div class="box" ng-click="addToCount()">
+          <div class="accomplishment">
+        {{ habit.name }}
+              <a href="#" ng-click="delete()" class="x">x</a>
+              <p class="count"> {{ habit.count }} </p>
           </div>
-      </div>
-  </div>  <!-- end class-container habit-ctrl  -->
-</body>
+        </div>
+    </div>
+</div>  <!-- end class-container habit-ctrl  -->
+

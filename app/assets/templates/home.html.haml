@@ -1,0 +1,11 @@
+.container(data-ng-controller="accomplishmentController")
+    %p What'd you do?
+    %form(ng-submit="submit()")
+        %input(type="text" ng-model="input")
+    #current-week-habits(data-ng-repeat="habit in currentWeekHabits | filter:input")
+        .box(ng-click="addToCount()")
+          .accomplishment
+        {{ habit.name }}
+              %a(href="#" ng-click="delete()" class="x")x
+              %p(class="count")
+                {{ habit.count }}
