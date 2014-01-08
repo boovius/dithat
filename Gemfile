@@ -32,15 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :test do 
-	gem 'spinach'
+group :test, :development do 
+	gem 'spinach-rails'
 	gem 'rspec-rails', '~> 2.0'
 end
-
-group :development do 
-	gem 'rspec-rails', '~> 2.0'
-end
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
